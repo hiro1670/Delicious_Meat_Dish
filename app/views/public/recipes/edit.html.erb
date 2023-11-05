@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <h1><%= @recipe.name %>レシピ編集</h1>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-auto">
+      <%= form_with model: @recipe do |f| %>
+      
+        <table class="table table-borderless">
+          <tr>
+            <td><h4>画像</h4></td>
+            <td><%= f.file_field :recipe_image %></td>
+          </tr>
+          
+          <tr>
+            <td><h4>レシピ名</h4></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          
+          <tr>
+            <td><h4>説明</h4></td>
+            <td><%= f.text_area :explanation %></td>
+          </tr>
+          
+          <tr>
+            <td><h4>手順</h4></td>
+            <td><%= f.text_area :process %></td>
+          </tr>
+          
+          <tr>
+            <td><h4>タグ</h4></td>
+            <td><%= f.text_field :tag %></td>
+          </tr>
+          
+          <tr>
+            <td></td>
+            <td><%= f.submit "変更を保存" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

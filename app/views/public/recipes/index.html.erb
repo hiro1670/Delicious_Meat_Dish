@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="texts-wrapper">
+    <div class="contents-title">
+      <div class="row">
+        <div class="col-9">
+          <h1 class="mt-5 text-left">レシピ一覧</h1>
+          <div class="row">
+            <% @recipes.each do |recipe| %>
+              <div class="col-md-3 my-4">
+                <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+                  <%= link_to recipe_path(recipe.id) do %>
+                    <%= image_tag recipe.get_recipe_image(285,135) %>
+                  <% end %>
+                  <h4 class="card-title"><%= recipe.name%></h4>
+                  <div class="card-body">
+                    <%= recipe.tag %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    
