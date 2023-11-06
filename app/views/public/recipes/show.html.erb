@@ -11,6 +11,8 @@
       
       <%= @recipe.explanation %></br>
       
+      <%= @recipe.tag %>
+      
       <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
       <table  class="table table-borderless">
         <tr>
@@ -21,10 +23,17 @@
       <% end %>
       
       
-      <%= @recipe.process %>
+      <% @recipe.procedures.each do |procedure|  %>
+        <table class="table table-borderless">
+          <tr>
+            <td rowspan="2"><%= procedure.body %></td>
+            <td><%= image_tag procedure.get_process_image(100,100) %></td>
+          </tr>
+        </table>
+      <% end %>
       
       <table class="table-borderless">
-        <% if @recipe.customer == current_customer %>
+        <% if @recipe.user == current_user %>
         <tr>
           <td><%= link_to "削除", recipe_path(@recipe), method: :delete %></td>
           <td><%= link_to "レシピ編集", edit_recipe_path(@recipe), class:'btn btn-success' %></td>

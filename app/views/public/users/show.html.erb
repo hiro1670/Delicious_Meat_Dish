@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 my-5">
+      <%= render 'layouts/flash' %>
+      <h2 class="col-5">マイページ</h2>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-6">
+      
+      <table class="table table-borderless">
+        <tr>
+          <td><h2>登録情報</h2></td>
+          <td><%= link_to "編集する", edit_user_path(@user.id), class: 'btn btn-lg btn-success' %></td>
+        </tr>
+      </table>
+      
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>ユーザーネーム</td>
+            <td><%= @user.name %></td>
+          </tr>
+          
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+    
+      <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= image_tag recipe.get_recipe_image(285,135) %>
+        <% end %>
+        <h4 class="card-title"><%= recipe.name%></h4>
+          <div class="card-body">
+            <%= recipe.tag %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

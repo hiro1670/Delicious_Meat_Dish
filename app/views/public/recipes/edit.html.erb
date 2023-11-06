@@ -1,16 +1,18 @@
 <div class="container">
   <div class="row">
-    <h1><%= @recipe.name %>レシピ編集</h1>
+    <div class="col-md-4 offset-md-2 mt-3">
+      <h1><%= @recipe.name %>レシピ編集</h1>
+    </div>
   </div>
   
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-md-auto">
       <%= form_with model: @recipe do |f| %>
       
         <table class="table table-borderless">
           <tr>
             <td><h4>画像</h4></td>
-            <td><%= f.file_field :recipe_image %></td>
+            <td><%= f.file_field :recipe_image, accept: "image/*" %></td>
           </tr>
           
           <tr>
@@ -24,13 +26,23 @@
           </tr>
           
           <tr>
-            <td><h4>手順</h4></td>
-            <td><%= f.text_area :process %></td>
+            <td><h4>タグ</h4></td>
+            <td><%= f.text_field :tag %></td>
           </tr>
           
           <tr>
-            <td><h4>タグ</h4></td>
-            <td><%= f.text_field :tag %></td>
+            <%= f.fields_for :recipe_ingredients do |t| %>
+            <td><%= render "recipe_ingredient_fields", f: t %></td>
+            <% end %>
+            <td><%= link_to_add_association "+フォームを追加", f, :recipe_ingredients, class: "btn btn-block" %></td>
+          </tr>
+          
+          <tr>
+            <%= f.fields_for :procedures do |t| %>
+            <td><%= render "procedure_fields", f: t %></td>
+            <% end %>
+            <td></td>
+            <td><%= link_to_add_association "+フォームを追加", f, :procedures, class: "btn btn-block" %></td>
           </tr>
           
           <tr>

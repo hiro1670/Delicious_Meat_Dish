@@ -24,6 +24,11 @@
             <td><h4>説明</h4></td>
             <td><%= f.text_area :explanation %></td>
           </tr>
+          
+          <tr>
+            <td><h4>タグ</h4></td>
+            <td><%= f.text_field :tag %></td>
+          </tr>
         
           <tr>
             <%= f.fields_for :recipe_ingredients do |t| %>
@@ -31,27 +36,21 @@
             <% end %>
             <td><%= link_to_add_association "+フォームを追加", f, :recipe_ingredients, class: "btn btn-block" %></td>
           </tr>
-      
+          
           <tr>
+            <%= f.fields_for :procedures do |t| %>
+            <td><%= render "procedure_fields", f: t %></td>
+            <% end %>
             <td></td>
-          </tr>
-          
-          <tr>
-            <td><h4>手順</h4></td>
-            <td><%= f.text_area :process, :size => "60x10" %></td>
-          </tr>
-          
-          <tr>
-            <td><h4>タグ</h4></td>
-            <td><%= f.text_field :tag %></td>
+            <td><%= link_to_add_association "+フォームを追加", f, :procedures, class: "btn btn-block" %></td>
           </tr>
           
           <tr>
             <td></td>
             <td><%= f.submit "投稿" %></td>
           </tr>
-        <% end %>
       </table>
+      <% end %>
     </div>
   </div>
 </div>

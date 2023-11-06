@@ -7,7 +7,7 @@ class Public::RecipesController < ApplicationController
   
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.customer_id = current_customer.id
+    @recipe.user_id = current_user.id
     @recipe.save
     redirect_to recipes_path
   end
@@ -41,14 +41,14 @@ class Public::RecipesController < ApplicationController
   
   def recipe_params#accepts_nested_attributes_forで指定したrecipe_ingredientsモデルをrecipe_ingredients_attributes: []として一緒に追加して送ることができる。
     params.require(:recipe).permit(
-      :customer_id,
+      :user_id,
       :name,#レシピ名
       :explanation,#説明
       :process,#手順
       :tag,#タグ
       :recipe_image,#レシピ画像
       recipe_ingredients_attributes: [:name, :quantity, :_destroy],
-      procedures_attributes:[:body, :_destroy]
-    )
+      procedures_attributes: [:body, :process_image, :_destroy]
+      )
   end
 end

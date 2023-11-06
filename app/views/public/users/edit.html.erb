@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col my-5">
+      <%= render 'layouts/error', obj: @user %>
+      <h2 class="col-4">ユーザー情報編集</h2>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-10">
+      <%= form_with model: @user do |f| %>
+      
+      <table class="table table-borderless">
+        <tr>
+          <td>ユーザーネーム</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.text_field :email %></td>
+        </tr>
+        
+        <tr>
+          <td><%= f.submit "編集内容を保存", class: 'btn btn-success btn-lg' %></td>
+          <td><%= link_to "退会する", confirm_users_path, class: 'btn btn-danger btn-lg' %></td>
+        </tr>
+      </table>
+      
+      <% end %>
+    </div>
+  </div>
+</div>

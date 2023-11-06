@@ -24,4 +24,25 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  
+  def guest_sign_in
+    end_user = EndUser.guest
+    sign_in end_user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+  
+  
+  protected
+  
+  def reject_user
+    @user = User.find_by(name: params[:user][:name])
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_user_registration
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+    end
+  end
 end

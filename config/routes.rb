@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   }
   
   #顧客用
-  devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
   namespace :admin do
     get 'homes/top'
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
   end
   
   #顧客側のルーティング
@@ -22,12 +22,16 @@ Rails.application.routes.draw do
     get "tag/search" => "tagsearches#search"
     get "search" => "searches#search"
     resources :recipes, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :customers, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: [:show, :edit, :update] do
       collection do
         get "confirm"
         patch "withdraw"
       end
     end
+  end
+  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

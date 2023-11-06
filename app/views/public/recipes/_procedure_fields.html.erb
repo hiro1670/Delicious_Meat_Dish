@@ -1,0 +1,5 @@
+<div class="nested-fields mt-3">
+  <%= f.text_area :body, placeholder: "手順を記入", :size=>"60x5" %>
+  <%= f.file_field :process_image, accept: "image/*" %>
+  <%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-sm" %>
+</div>
