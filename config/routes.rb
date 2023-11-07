@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     get "about" => "homes#about", as: "about"
     get "tag/search" => "tagsearches#search"
     get "search" => "searches#search"
-    resources :recipes, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :recipes, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resources :recipe_comments, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update] do
       collection do
         get "confirm"

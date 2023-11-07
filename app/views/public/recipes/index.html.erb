@@ -1,26 +1,28 @@
-<div class="container">
-  <div class="texts-wrapper">
-    <div class="contents-title">
+<div class="card-list-container py-5">
+  <% @recipes.each do |recipe| %>
+  
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= link_to recipe_path(recipe.id) do %>
+      <%= image_tag recipe.get_recipe_image(500,400), class:"card-img-top"; %>
+    <% end %>
+    <div class="card-body">
       <div class="row">
-        <div class="col-9">
-          <h1 class="mt-5 text-left">レシピ一覧</h1>
-          <div class="row">
-            <% @recipes.each do |recipe| %>
-              <div class="col-md-3 my-4">
-                <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
-                  <%= link_to recipe_path(recipe.id) do %>
-                    <%= image_tag recipe.get_recipe_image(285,135) %>
-                  <% end %>
-                  <h4 class="card-title"><%= recipe.name%></h4>
-                  <div class="card-body">
-                    <%= recipe.tag %>
-                  </div>
-                </div>
-              </div>
+        <div class="col-2">
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to recipe_path(recipe.id), class:"text-dark" do %>
+              <strong><i class="far fa-flag"></i><span>　<%= recipe.name %></span></strong>
             <% end %>
-          </div>
+          </p>
+          <p class="card-text">説明：<%= recipe.explanation %></p>
+          <p class="card-text">タグ：<%= recipe.tag %></p>
+          <span><i class="fas fa-user"></i> By <%= recipe.user.name %> | </span>
+          <span><%= recipe.recipe_comments.count %>コメント</span>
         </div>
       </div>
     </div>
   </div>
-</div>    
+  
+  <% end %>
+</div>

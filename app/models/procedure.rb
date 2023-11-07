@@ -1,6 +1,8 @@
 class Procedure < ApplicationRecord
   belongs_to :recipe
   
+  validates :body, presence: true
+  
   has_one_attached :process_image
 
   def get_process_image(width, height)

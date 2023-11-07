@@ -8,8 +8,11 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    @recipe.save
-    redirect_to recipes_path
+    if @recipe.save
+     redirect_to recipes_path
+    else
+      render :new
+    end
   end
   
   def index
@@ -19,6 +22,7 @@ class Public::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_ingredients = @recipe.recipe_ingredients.build
+    @recipe_comment = RecipeComment.new
   end
   
   def edit

@@ -3,6 +3,12 @@ class Recipe < ApplicationRecord
   
   has_many :recipe_ingredients, dependent: :destroy
   has_many :procedures, dependent: :destroy
+  has_many :recipe_comments, dependent: :destroy
+  
+  
+  validates :name, presence: true
+  validates :explanation, presence: true
+  validates :tag, presence: true
   
   #関連付けしたモデルを一緒にデータ保存できるようにする
   accepts_nested_attributes_for :procedures, allow_destroy: true

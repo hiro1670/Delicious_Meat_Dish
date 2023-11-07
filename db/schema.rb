@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_06_045942) do
+ActiveRecord::Schema.define(version: 2023_11_07_013604) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,15 +52,6 @@ ActiveRecord::Schema.define(version: 2023_11_06_045942) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text "comment", null: false
-    t.integer "user_id", null: false
-    t.integer "recipe_id", null: false
-    t.string "star"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "how_to_makes", force: :cascade do |t|
     t.integer "recipe_id", null: false
     t.text "explanation"
@@ -77,6 +68,15 @@ ActiveRecord::Schema.define(version: 2023_11_06_045942) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_procedures_on_recipe_id"
+  end
+
+  create_table "recipe_comments", force: :cascade do |t|
+    t.text "comment", null: false
+    t.integer "user_id", null: false
+    t.integer "recipe_id", null: false
+    t.float "star"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
