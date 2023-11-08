@@ -21,8 +21,8 @@ window.raty = function(elem,opt){
     return raty;
 }
 
-require("jquery")
 require("@nathanvda/cocoon")
+require("jquery")
 
 Rails.start()
 Turbolinks.start()

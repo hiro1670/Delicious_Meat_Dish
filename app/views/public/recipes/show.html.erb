@@ -1,4 +1,5 @@
 <div class="container">
+  <%= render 'layouts/flash' %>
   <div class="row">
     <h1 class="mt-3 my-3"><%= @recipe.name %>レシピ詳細</h1>
   </div>
@@ -70,9 +71,10 @@
               <div class="media border md-3">
                 <div class="media-body ml-4 p-3">
                     <%= recipe_comment.user.name %>
-                    <%= recipe_comment.created_at.strftime('%Y/%m/%d') %><%= recipe_comment.comment %>
+                    ｜<%= recipe_comment.comment %>
                     <%= render "star", recipe_comment: recipe_comment %>
-                    <% if recipe_comment.user == current_user %>
+                    <%#管理者　またはレシピにコメントしたのがログインしているユーザーだったら %>
+                    <% if current_admin || recipe_comment.user == current_user %>
                       <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: 'btn btn-danger btn-sm' %>
                     <% end %>
                 </div>

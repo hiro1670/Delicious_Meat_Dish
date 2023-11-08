@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4 mt-4">
+      <h3><%= @user.name %> 詳細</h3>
+    </div>
+  </div>
+  
+  <%= render 'layouts/flash' %>
+  
+  <div class="row">
+    <div class="col-10">
+      <table class="table table-borderless mt-3">
+        <tr>
+          <td>ユーザーID</td>
+          <td><%= @user.id %></td>
+        </tr>
+        
+        <tr>
+          <td>ユーザーネーム</td>
+          <td><%= @user.name %></td>
+        </tr>
+        
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+        
+        <tr>
+          <td>投稿数</td>
+          <td>
+            <%= link_to user_path(@user.id) do %>
+              <%= @user.recipes.count %>
+            <% end %>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>ユーザーステータス</td>
+          <% if @user.is_deleted == false %>
+            <td>有効</td>
+          <% else %>
+            <td>退会</td>
+          <% end %>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td><%= link_to "編集する", edit_admin_user_path(@user), class: 'btn btn-success' %></td>
+        </tr>
+      </table>
+      
+    </div>
+  </div>
+</div>

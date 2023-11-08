@@ -24,7 +24,7 @@ class Public::UsersController < ApplicationController
   end
   
   def withdraw
-    @user = User.find(params[:current_user.id])
+    @user = current_user
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
     reset_session

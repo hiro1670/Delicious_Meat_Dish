@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 my-5">
+      <h3>ユーザー一覧</h3>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-9">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th>ユーザーID</th>
+            <th>ユーザーネーム</th>
+            <th>メールアドレス</th>
+            <th>ユーザーステータス</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @user.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user.id) %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_deleted ==  false %>
+                <p>有効</p>
+              <% else %>
+                <p>退会</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>
