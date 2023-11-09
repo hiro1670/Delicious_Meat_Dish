@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  
+  before_action :is_matching_login_user, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes
@@ -19,6 +19,12 @@ class Public::UsersController < ApplicationController
     end
   end
   
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:recipe_id)
+    @favorite_recipes = Recipe.find(favorites)
+  end
+  
   def confirm
     @user = current_user
   end
@@ -36,5 +42,12 @@ class Public::UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name, :email, :is_deleted)
+  end
+  
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to recipes_path
+    end
   end
 end

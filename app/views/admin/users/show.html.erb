@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4 mt-4">
-      <h3><%= @user.name %> 詳細</h3>
+      <h3><%= @user.name %> さんの詳細</h3>
     </div>
   </div>
   
@@ -32,6 +32,11 @@
               <%= @user.recipes.count %>
             <% end %>
           </td>
+        </tr>
+        
+        <tr>
+          <td>コメント数</td>
+          <td><%= @user.recipe_comments.count %></td>
         </tr>
         
         <tr>

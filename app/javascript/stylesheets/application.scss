@@ -1,1 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
+
+.navbar.bg-choco {
+  width: 100;
+  background-image: url('/assets/Cook.jpg');
+  opacity: 0.8;
+}

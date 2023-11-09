@@ -6,6 +6,7 @@ class Admin::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @recipe_comments = @user.recipe_comments
   end
   
   def edit

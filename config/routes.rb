@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: "admin/sessions"
   }
-  
+
   #顧客用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
-  
+
   #顧客側のルーティング
   scope module: :public do
     root to: 'homes#top'
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get "tag/search" => "tagsearches#search"
     get "search" => "searches#search"
     resources :recipes, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :favorite, only: [:create, :destroy]
       resources :recipe_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update] do
@@ -30,9 +31,12 @@ Rails.application.routes.draw do
         get "confirm"
         patch "withdraw"
       end
+      member do
+        get 'favorites'
+      end
     end
   end
-  
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end

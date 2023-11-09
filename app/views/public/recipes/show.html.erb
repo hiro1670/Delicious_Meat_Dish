@@ -24,6 +24,24 @@
               <span> By <%= @recipe.user.name %> |</span>
               <span><%= @recipe.created_at.strftime('%Y/%m/%d') %> |</span>
               <span><i class="fa-solid fa-comment"></i><%= @recipe.recipe_comments.count %></span>
+              
+            <%# 管理者ならばいいね機能は表示しない %>
+            <% unless admin_signed_in? %>
+              <% if @recipe.favorited_by?(current_user) %>
+                <span>
+                  <%= link_to recipe_favorite_path(@recipe), method: :delete do %>
+                    ♥<%= @recipe.favorites.count %> いいね
+                  <% end %>
+                </span>
+              <% else %>
+                <span>
+                  <%= link_to recipe_favorite_path(@recipe), method: :post do %>
+                    ♡<%= @recipe.favorites.count %> いいね
+                  <% end %>
+                </span>
+              <% end %>
+            <% end %>
+              
             </div>
           </div>
             
@@ -73,6 +91,7 @@
                     <%= recipe_comment.user.name %>
                     ｜<%= recipe_comment.comment %>
                     <%= render "star", recipe_comment: recipe_comment %>
+                    
                     <%#管理者　またはレシピにコメントしたのがログインしているユーザーだったら %>
                     <% if current_admin || recipe_comment.user == current_user %>
                       <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: 'btn btn-danger btn-sm' %>

@@ -1,28 +1,32 @@
-<div class="card-list-container py-5">
-  <% recipes.each do |recipe| %>
-    <div class="card w-50 mx-auto mt-4 shadow-lg">
-      <%= link_to recipe_path(recipe.id) do %>
-        <%= image_tag recipe.get_recipe_image(500,400), class:"card-img-top"; %>
-      <% end %>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-2">
-          </div>
-          <div class="col-10">
-            <p class="card-title">
-              <%= link_to recipe_path(recipe.id), class:"text-dark" do %>
-                <strong><i class="far fa-flag"></i><span>　<%= recipe.name %></span></strong>
-              <% end %>
-            </p>
-            <p class="card-text">説明：<%= recipe.explanation %></p>
-            <p class="card-text">タグ：
-              <%= link_to recipe.tag, tag_search_path(tag: recipe.tag) %>
-            </p>
-            <span><i class="fas fa-user"></i> By <%= recipe.user.name %> | </span>
-            <span><%= recipe.recipe_comments.count %>コメント</span>
+<div class="container">
+  <div class="card-list-container py-5">
+    <div class="row">
+    <% recipes.each do |recipe| %>
+      <div class="col-4">
+        <div class="card mx-auto mt-4 shadow-lg">
+          <%= link_to recipe_path(recipe.id) do %>
+            <%= image_tag recipe.get_recipe_image(500,400), class:"card-img-top"; %>
+          <% end %>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-10">
+                <p class="card-title">
+                  <%= link_to recipe_path(recipe.id), class:"text-dark" do %>
+                    <strong><i class="far fa-flag"></i><span>　<%= recipe.name %></span></strong>
+                  <% end %>
+                </p>
+                <p class="card-text">説明：<%= recipe.explanation %></p>
+                <p class="card-text">タグ：
+                  <%= link_to recipe.tag, tag_search_path(tag: recipe.tag) %>
+                </p>
+                <span><i class="fas fa-user"></i> By <%= recipe.user.name %> | </span>
+                <span><%= recipe.recipe_comments.count %>コメント</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

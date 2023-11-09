@@ -10,6 +10,9 @@
     <div class="col-9 offset-1">
       
       <table class="table table-borderless">
+        <tr>
+          <td><%= link_to "お気に入りレシピ", favorites_user_path(@user.id), class: 'btn btn-lg btn-success' %></td>
+        </tr>
         <% if @user == current_user %>
         <tr>
           <td><h2>登録情報</h2></td>
@@ -17,6 +20,8 @@
         </tr>
         <% end %>
       </table>
-  
+      
+    </div>
+  </div>
     <%= render 'public/recipes/list',recipes: @recipes %>
 </div>
