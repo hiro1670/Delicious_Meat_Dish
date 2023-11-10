@@ -51,8 +51,8 @@ class Public::RecipesController < ApplicationController
       :process,#手順
       :tag,#タグ
       :recipe_image,#レシピ画像
-      recipe_ingredients_attributes: [:name, :quantity, :_destroy],
-      procedures_attributes: [:body, :process_image, :_destroy]
+      recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy],
+      procedures_attributes: [:id, :body, :process_image, :_destroy]
       )
   end
 end

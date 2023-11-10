@@ -1,30 +1,28 @@
 <div class="container">
   <%= render 'layouts/flash' %>
   <div class="row">
-    <h1 class="mt-3 my-3"><%= @recipe.name %>レシピ詳細</h1>
+    <h1 class="mt-3 my-3 bg-light"><%= @recipe.name %>レシピ詳細</h1>
   </div>
-  
+
   <div class="post-detail">
     <div class="container">
-      <div class="card mx-auto mt-4 shadow-lg">
+      <div class="card mx-auto mt-4 mb-4 shadow-lg">
         <%= image_tag @recipe.get_recipe_image(700,600) %>
         <div class="card-body">
           <div class="row">
-            <div class="col-sm-12 col-md-2">
-            </div>
-            
-            <div class="col-sm-12 col-md-10">
+
+            <div class="col-sm-12 col-md-10 offset-md-1 text-center">
               <p class="card-title">
                 <strong><span><%= @recipe.name %></span></strong>
               </p>
-              
+
               <p class="card-title">説明：<%= @recipe.explanation %></p>
               <p class="card-title">タグ：<%= @recipe.tag%></p>
-              
+
               <span> By <%= @recipe.user.name %> |</span>
               <span><%= @recipe.created_at.strftime('%Y/%m/%d') %> |</span>
               <span><i class="fa-solid fa-comment"></i><%= @recipe.recipe_comments.count %></span>
-              
+
             <%# 管理者ならばいいね機能は表示しない %>
             <% unless admin_signed_in? %>
               <% if @recipe.favorited_by?(current_user) %>
@@ -41,22 +39,22 @@
                 </span>
               <% end %>
             <% end %>
-              
+
             </div>
           </div>
-            
+
             <hr>
             <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
             <table class="table table-borderless mt-4">
               <tr>
                 <td></td>
                 <td><%= recipe_ingredient.name %></td>
-                <td><%= recipe_ingredient.quantity %></td>
                 <td></td>
+                <td><%= recipe_ingredient.quantity %></td>
               </tr>
             </table>
             <% end %>
-            
+
             <hr>
             <% @recipe.procedures.each do |procedure| %>
             <table class="table table-borderless">
@@ -68,7 +66,7 @@
               </tr>
             </table>
             <% end %>
-          
+
           <table class="table-borderless">
             <% if @recipe.user == current_user %>
               <tr>
@@ -81,17 +79,17 @@
             <% end %>
           </table>
           <hr>
-          
+
           <div class="comments card-text">
             <h4 class="mt-4"><%= @recipe.recipe_comments.count %>件コメント</h4>
-            
+
             <% @recipe.recipe_comments.each do |recipe_comment| %>
               <div class="media border md-3">
                 <div class="media-body ml-4 p-3">
                     <%= recipe_comment.user.name %>
                     ｜<%= recipe_comment.comment %>
                     <%= render "star", recipe_comment: recipe_comment %>
-                    
+
                     <%#管理者　またはレシピにコメントしたのがログインしているユーザーだったら %>
                     <% if current_admin || recipe_comment.user == current_user %>
                       <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: 'btn btn-danger btn-sm' %>
@@ -100,13 +98,13 @@
               </div>
             <% end %>
           </div>
-          
+
           <div class="form-group">
             <label class="mt-3">コメントする</label>
-            
+
             <%= form_with model: [@recipe, @recipe_comment] do |f|%>
               <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", :size=>"60x5" %>
-              
+
               <%#評価機能=%>
               <% if @recipe_comment.id.nil? %>
                   <div class="form-group" id="star">
@@ -118,9 +116,9 @@
                     $(document).on('turbolinks:load', function() {
                       let elem = document.querySelector('#post_raty');
                       if (elem == null) return;
-                
+
                       elem.innerHTML = ""
-                      let opt = {  
+                      let opt = {
                         starOn: "<%= asset_path('star-on.png') %>",
                         starOff: "<%= asset_path('star-off.png') %>",
                         starHalf: "<%= asset_path('star-half.png') %>",
@@ -134,6 +132,7 @@
                     <%= render "star", recipe_comment: @recipe_comment %>
                   </div>
                 <% end %>
+                <%#評価機能%>
 
               <%= f.submit "送信する", class:'btn btn-lg btn-info mt-2 float-light' %>
             <% end %>

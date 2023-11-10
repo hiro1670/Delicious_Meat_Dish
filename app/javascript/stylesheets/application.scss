@@ -1,7 +1,51 @@
 @use '~bootstrap/scss/bootstrap';
 
-.navbar.bg-choco {
-  width: 100;
-  background-image: url('/assets/Cook.jpg');
-  opacity: 0.8;
+.top-bg {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-size: 50% 75%;
+  font-size: 16px;
+  line-height: 2; 
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0px;
+  font-family: 'Hannotate SC',sans-serif;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+
+footer {
+  color: #fff;
+  background-color: #2f4f4f;
+  margin-top: auto;
+}
+
+.footer__navi {
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.footer__navi li {
+  float: right;
+  display: inline-block;
+}
+
+.footer__navi li:not(:last-child) {
+  margin-right: 16px;
+}
+
+.footer__logo {
 }

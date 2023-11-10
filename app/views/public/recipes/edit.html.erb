@@ -7,7 +7,7 @@
   
   <div class="row justify-content-center">
     <div class="col-md-auto">
-      <%= form_with model: @recipe do |f| %>
+      <%= form_with model: @recipe, method: :patch  do |f| %>
       
         <table class="table table-borderless">
           <tr>
