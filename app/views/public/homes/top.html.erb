@@ -6,8 +6,12 @@
       <%= render 'slide' %>
     </div>
   </div>
-</div>
-
-<div>
-
+  
+  <div class="row">
+    <div class="col-5">
+      <h2 class="mt-5">新着レシピ</h2>
+    </div>
+  </div>
+  
+  <%= render 'public/recipes/list', recipes: @recipes %>
 </div>

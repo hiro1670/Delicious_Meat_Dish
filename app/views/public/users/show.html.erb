@@ -1,27 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 my-5">
+    <div class="col-10 my-5">
       <%= render 'layouts/flash' %>
-      <h2 class="col-9"><%= @user.name %>さんのレシピ一覧</h2>
+        <table class="table table-borderless">
+          <tr>
+            <td><h2><%= @user.name %>さんのレシピ一覧</h2></td>
+            <td><%= link_to "お気に入りレシピ", favorites_user_path(@user.id), class: 'btn btn-lg btn-success' %></td>
+          </tr>
     </div>
   </div>
-  
+
   <div class="row">
-    <div class="col-9 offset-1">
-      
+    <div class="col-10">
+
       <table class="table table-borderless">
-        <tr>
-          <td><%= link_to "お気に入りレシピ", favorites_user_path(@user.id), class: 'btn btn-lg btn-success' %></td>
-        </tr>
         <% if @user == current_user %>
         <tr>
           <td><h2>登録情報</h2></td>
+          <td>　　　　</td>
           <td><%= link_to "編集する", edit_user_path(@user.id), class: 'btn btn-lg btn-success' %></td>
         </tr>
         <% end %>
       </table>
-      
+
     </div>
   </div>
-    <%= render 'public/recipes/list',recipes: @recipes %>
+  
+   <%= render 'public/recipes/list', recipes: @recipes %>
 </div>

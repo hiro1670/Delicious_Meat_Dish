@@ -41,6 +41,10 @@ class Public::RecipesController < ApplicationController
     redirect_to recipes_path
   end
   
+  def average_star
+  reviews.average(:star)
+  end
+  
   private
   
   def recipe_params#accepts_nested_attributes_forで指定したrecipe_ingredientsモデルをrecipe_ingredients_attributes: []として一緒に追加して送ることができる。

@@ -1,13 +1,17 @@
-<div class="average-review-rating" data-score=<%= @recip.average_star %>></div>
-
+<div id="star_<%= recipe.id %>" ></div>
 <script>
-  $('.average-review-rating').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
+  $(document).on('turbolinks:load', function() {
+    let elem = document.querySelector('#star_<%= recipe.id %>');
+    if (elem == null) return;
+
+    elem.innerHTML = "";
+    let opt = {
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      score: "<%= recipe.recipe_comments.average(:star) %>",
+      readOnly :true,
+    };
+    raty(elem, opt);
   });
 </script>

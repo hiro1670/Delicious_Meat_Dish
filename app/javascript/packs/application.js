@@ -15,7 +15,7 @@ import "../stylesheets/application";
 
 //require('packs/raty')
 import Raty from "./raty.js"         // 同じ階層にあるraty.jsをRatyという名前でインポート
-window.raty = function(elem,opt){ 
+window.raty = function(elem,opt){
     var raty =  new Raty(elem,opt)
     raty.init();
     return raty;

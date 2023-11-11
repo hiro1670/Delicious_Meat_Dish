@@ -48,9 +48,9 @@
             <table class="table table-borderless mt-4">
               <tr>
                 <td></td>
-                <td><%= recipe_ingredient.name %></td>
+                <td width="200"><%= recipe_ingredient.name %></td>
+                <td width="100"><%= recipe_ingredient.quantity %></td>
                 <td></td>
-                <td><%= recipe_ingredient.quantity %></td>
               </tr>
             </table>
             <% end %>
@@ -59,9 +59,9 @@
             <% @recipe.procedures.each do |procedure| %>
             <table class="table table-borderless">
               <tr>
-                <td></td>
-                <td><%= procedure.body %></td>
-                <td><%= image_tag procedure.get_process_image(100,100) %></td>
+                <td width="100"></td>
+                <td width=""><%= procedure.body %></td>
+                <td width="40"><%= image_tag procedure.get_process_image(100,100) %></td>
                 <td></td>
               </tr>
             </table>
@@ -108,7 +108,7 @@
               <%#評価機能=%>
               <% if @recipe_comment.id.nil? %>
                   <div class="form-group" id="star">
-                    <%= f.label :star %>
+                    <%= f.label :star, "評価" %>
                     <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
                     <div id="post_raty"></div>
                   </div>
