@@ -3,7 +3,7 @@
     <div class="row">
     <% recipes.each do |recipe| %>
       <div class="col-md-4">
-        <div class="card mx-auto mt-4 mb-4 shadow-lg">
+        <div class="card mx-auto mb-4 shadow-lg">
           <%= link_to recipe_path(recipe.id) do %>
             <%= image_tag recipe.get_recipe_image(500,400), class:"card-img-top"; %>
           <% end %>

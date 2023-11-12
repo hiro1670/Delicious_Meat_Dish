@@ -1,1 +1,11 @@
+<div class="container">
+  <div class="row">
+    <h2 class="mt-5 bg-light">レシピ一覧（全<%= @recipes.count %>件）</h2>
+  </div>
+</div>
+
 <%= render 'list', recipes: @recipes %>
+
+<div class="d-flex justify-content-center mt-3 custom-pagination">
+  <%= paginate @recipes %>
+</div>

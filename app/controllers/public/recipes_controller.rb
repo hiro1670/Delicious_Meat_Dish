@@ -16,7 +16,7 @@ class Public::RecipesController < ApplicationController
   end
   
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.page(params[:page])
   end
   
   def show
@@ -41,10 +41,6 @@ class Public::RecipesController < ApplicationController
     redirect_to recipes_path
   end
   
-  def average_star
-  reviews.average(:star)
-  end
-  
   private
   
   def recipe_params#accepts_nested_attributes_forで指定したrecipe_ingredientsモデルをrecipe_ingredients_attributes: []として一緒に追加して送ることができる。
@@ -52,11 +48,10 @@ class Public::RecipesController < ApplicationController
       :user_id,
       :name,#レシピ名
       :explanation,#説明
-      :process,#手順
       :tag,#タグ
       :recipe_image,#レシピ画像
       recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy],
-      procedures_attributes: [:id, :body, :process_image, :_destroy]
+      procedures_attributes: [:id, :body, :_destroy]
       )
   end
 end

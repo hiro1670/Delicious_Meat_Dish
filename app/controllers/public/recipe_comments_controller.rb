@@ -15,7 +15,7 @@ class Public::RecipeCommentsController < ApplicationController
   
   def destroy
     RecipeComment.find(params[:id]).destroy
-    redirect_to recipe_path(params[:recipe_id])
+    redirect_to request.referer
   end
   
   private

@@ -1,1 +1,30 @@
-<h2>こんにちは</h2>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="2000">
+        <%= image_tag 'slide1.jpg', size: "1400x700", class:'d-block w-100' %>
+    </div>
+
+    <div class="carousel-item" data-interval="2000">
+      <%= image_tag 'about1.jpg', size: "1400x700", class: 'd-block w-100' %>
+    </div>
+
+    <div class="carousel-item" data-interval="2000">
+      <%= image_tag 'slide2.jpg', size: "1400x700", class: 'd-block w-100' %>
+    </div>
+
+    <div class="carousel-caption about-bg">
+      <h1>About</h1>
+      <h4 class="mt-4">DeliciousMeatDishは肉料理に特化したレシピ投稿サイトです。</br>
+      昨今菜食主義が増えている中、このサイトでは、</br>お肉料理を中心にレシピを投稿でき、レビューをすることもできます。 </br>
+      肩身が狭くなってしまった肉好きさんのプラットフォームを作れたらと思いました。</h4>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

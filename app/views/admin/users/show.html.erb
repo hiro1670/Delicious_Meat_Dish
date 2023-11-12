@@ -35,11 +35,6 @@
         </tr>
         
         <tr>
-          <td>コメント数</td>
-          <td><%= @user.recipe_comments.count %></td>
-        </tr>
-        
-        <tr>
           <td>ユーザーステータス</td>
           <% if @user.is_deleted == false %>
             <td>有効</td>
@@ -54,6 +49,27 @@
         </tr>
       </table>
       
+    </div>
+  </div>
+  
+  <div class="row">
+    <h4><%= @user.name %>さんのコメント一覧</h4>
+  </div>
+  
+  <div class="row">
+    <div class="col-6 mb-3">
+      <% @recipe_comments.each do |recipe_comment| %>
+         <div class="media border md-3">
+           <div class="media-body">
+             <%= recipe_comment.recipe.user.name %>さんの
+            <%= recipe_comment.recipe.name %>
+            <hr>
+            <%= recipe_comment.comment %>
+            <%= render 'public/recipes/star', recipe_comment: recipe_comment %>
+            <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: 'btn btn-danger btn-sm' %></br>
+      <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
