@@ -29,4 +29,11 @@ class Recipe < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  
+  def self.search(word)
+    #joinメソッドは複数のテーブルを１つに結合したいときに使う
+    Recipe.joins(:recipe_ingredients).where(
+      "recipes.name LIKE ? OR explanation LIKE ? OR tag LIKE ? OR recipe_ingredients.name LIKE ?",
+      "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%")
+  end
 end

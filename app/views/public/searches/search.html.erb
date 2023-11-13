@@ -1,0 +1,9 @@
+<div class="cotainer">
+  <div class="row">
+    <div class="col-4 offset-1">
+      <h2 class="my-3"><%= @word %> の検索結果（全<%= @recipes.count%>件）</h2>
+    </div>
+  </div>
+</div>
+
+<%= render 'public/recipes/list', recipes: @recipes %>

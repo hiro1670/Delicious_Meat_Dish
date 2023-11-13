@@ -4,9 +4,9 @@
       <h3><%= @user.name %> さんの詳細</h3>
     </div>
   </div>
-  
+
   <%= render 'layouts/flash' %>
-  
+
   <div class="row">
     <div class="col-10">
       <table class="table table-borderless mt-3">
@@ -14,17 +14,17 @@
           <td>ユーザーID</td>
           <td><%= @user.id %></td>
         </tr>
-        
+
         <tr>
           <td>ユーザーネーム</td>
           <td><%= @user.name %></td>
         </tr>
-        
+
         <tr>
           <td>メールアドレス</td>
           <td><%= @user.email %></td>
         </tr>
-        
+
         <tr>
           <td>投稿数</td>
           <td>
@@ -33,7 +33,7 @@
             <% end %>
           </td>
         </tr>
-        
+
         <tr>
           <td>ユーザーステータス</td>
           <% if @user.is_deleted == false %>
@@ -42,32 +42,48 @@
             <td>退会</td>
           <% end %>
         </tr>
-        
+
         <tr>
           <td></td>
           <td><%= link_to "編集する", edit_admin_user_path(@user), class: 'btn btn-success' %></td>
         </tr>
       </table>
-      
+
     </div>
   </div>
-  
+
   <div class="row">
-    <h4><%= @user.name %>さんのコメント一覧</h4>
+    <h4><%= @user.name %> さんのコメント一覧</h4>
   </div>
-  
+
   <div class="row">
-    <div class="col-6 mb-3">
-      <% @recipe_comments.each do |recipe_comment| %>
-         <div class="media border md-3">
+    <div class="col-8 mb-3">
+         <div class="media border md-3 mt-3 mb-3">
            <div class="media-body">
-             <%= recipe_comment.recipe.user.name %>さんの
-            <%= recipe_comment.recipe.name %>
-            <hr>
-            <%= recipe_comment.comment %>
-            <%= render 'public/recipes/star', recipe_comment: recipe_comment %>
-            <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: 'btn btn-danger btn-sm' %></br>
-      <% end %>
+             <table class="table table-borderless">
+               <tr>
+                 <th>投稿者名</th>
+                 <th>レシピ名</th>
+                 <th>コメント/レビュー</th>
+               </tr>
+               <% @recipe_comments.each do |recipe_comment| %>
+
+               <tr>
+                 <td><%= recipe_comment.recipe.user.name %></td>
+                 <td>
+                   <%= link_to recipe_path(recipe_comment.recipe.id) do %>
+                     <%= recipe_comment.recipe.name %>
+                    <% end %>
+                  </td>
+                 <td>
+                   <%= recipe_comment.comment %>
+                   <%= render 'public/recipes/star', recipe_comment: recipe_comment %>
+                 </td>
+                 <td><%= recipe_comment.created_at.strftime('%Y/%m/%d') %></td>
+                 <td><%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+               </tr>
+               <% end %>
+             </table>
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@
                 </p>
                 <span><i class="fas fa-user"></i> By <%= recipe.user.name %> | </span>
                 <span><%= recipe.recipe_comments.count %>コメント</span>
+                <span>❤️︎<%= recipe.favorites.count %></span>
                 <span><%= render 'public/recipes/average_star', recipe: recipe %></span>
               </div>
             </div>

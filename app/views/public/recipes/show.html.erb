@@ -28,7 +28,7 @@
               <% if @recipe.favorited_by?(current_user) %>
                 <span>
                   <%= link_to recipe_favorite_path(@recipe), method: :delete do %>
-                    ♥<%= @recipe.favorites.count %> いいね
+                    ❤️<%= @recipe.favorites.count %> いいね
                   <% end %>
                 </span>
               <% else %>
