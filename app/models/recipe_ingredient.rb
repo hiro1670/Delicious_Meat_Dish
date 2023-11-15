@@ -1,5 +1,5 @@
 class RecipeIngredient < ApplicationRecord
-  belongs_to :recipe, foreign_key: [:date,:name]
+  belongs_to :recipe
   
   validates :name, presence: true
   validates :quantity, presence: true

@@ -33,7 +33,7 @@ class Recipe < ApplicationRecord
   def self.search(word)
     #joinメソッドは複数のテーブルを１つに結合したいときに使う
     Recipe.joins(:recipe_ingredients).where(
-      "recipes.name LIKE ? OR explanation LIKE ? OR tag LIKE ? OR recipe_ingredients.name LIKE ?",
+      "recipes.name LIKE? OR recipes.explanation LIKE? OR recipes.tag LIKE? OR recipe_ingredients.name LIKE?",
       "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%")
   end
 end

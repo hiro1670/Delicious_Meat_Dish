@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-2 mt-3">
-      <h1><%= @recipe.name %>レシピ編集</h1>
+    <div class="col-md-8 offset-md-2">
+      <h1 class="bg-light mt-4 mb-3"><%= @recipe.name %>レシピ編集</h1>
     </div>
   </div>
   
   <div class="row justify-content-center">
-    <div class="col-md-auto">
+    <div class="col-md-10 offset-2 mt-4">
       <%= form_with model: @recipe, method: :patch  do |f| %>
       
         <table class="table table-borderless">
@@ -31,6 +31,7 @@
           </tr>
           
           <tr>
+            <td></td>
             <%= f.fields_for :recipe_ingredients do |t| %>
             
             <td class="d-block">
@@ -42,16 +43,16 @@
           </tr>
           
           <tr>
+            <td></td>
             <%= f.fields_for :procedures do |t| %>
             <td class="d-block"><%= render "procedure_fields", f: t %></td>
             <% end %>
-            <td></td>
             <td><%= link_to_add_association "+フォームを追加", f, :procedures, class: "btn btn-block" %></td>
           </tr>
           
           <tr>
             <td></td>
-            <td><%= f.submit "変更を保存" %></td>
+            <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
           </tr>
         </table>
       <% end %>

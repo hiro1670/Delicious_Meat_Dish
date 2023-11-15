@@ -15,17 +15,21 @@
         <% if user_signed_in? %>
 
           <li>
-            <%= link_to "レシピ投稿", new_recipe_path, class: 'nav-link text-light' %>
-          </li>
-
-          <li>
-            <%= link_to recipes_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-bowl-food"></i>レシピ一覧
+            <%= link_to new_recipe_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-utensils"></i> レシピ投稿
             <% end %>
           </li>
 
           <li>
-            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-light' %>
+            <%= link_to recipes_path, class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-bowl-food"></i> レシピ一覧
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-user-large"></i> マイページ
+            <% end %>
           </li>
 
           <li>
@@ -37,16 +41,20 @@
         <% elsif admin_signed_in? %>
           <li>
             <%= link_to  recipes_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-bowl-food"></i>レシピ一覧
+              <i class="fa-solid fa-bowl-food"></i> レシピ一覧
             <% end %>
           </li>
 
           <li>
-            <%= link_to "ユーザー一覧", admin_users_path, class:'nav-link text-light' %>
+            <%= link_to admin_users_path, class:'nav-link text-light' do  %>
+              <i class="fa-solid fa-user-group"></i> ユーザー一覧
+            <% end %>
           </li>
 
           <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'nav-link text-light' %>
+            <%= link_to destroy_admin_session_path, method: :delete, class:'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
           </li>
 
         <% else %>
@@ -63,7 +71,9 @@
           </li>
 
           <li>
-            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'nav-link text-light' %>
+            <%= link_to users_guest_sign_in_path, method: :post, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i> ゲストログイン（間欄用）
+            <% end %>
           </li>
 
           <li>

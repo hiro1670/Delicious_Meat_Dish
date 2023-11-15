@@ -59,16 +59,6 @@ ActiveRecord::Schema.define(version: 2023_11_09_041727) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "how_to_makes", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.text "explanation"
-    t.string "process_image"
-    t.integer "order_no"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id"], name: "index_how_to_makes_on_recipe_id"
-  end
-
   create_table "procedures", force: :cascade do |t|
     t.integer "recipe_id", null: false
     t.text "body", null: false
@@ -120,7 +110,6 @@ ActiveRecord::Schema.define(version: 2023_11_09_041727) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "how_to_makes", "recipes"
   add_foreign_key "procedures", "recipes"
   add_foreign_key "recipe_ingredients", "recipes"
 end
