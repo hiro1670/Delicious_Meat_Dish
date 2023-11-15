@@ -30,7 +30,8 @@ body {
 }
 
 main {
-  background-image: url('/assets/back.jpeg');
+  // background-image: url('/assets/back.jpeg');
+  background-image: image-url('/assets/back.jpeg')
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
