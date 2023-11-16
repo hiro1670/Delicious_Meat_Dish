@@ -15,6 +15,9 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :procedures, allow_destroy: true
   accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
   
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  
   has_one_attached :recipe_image
   
   def get_recipe_image(width, height)

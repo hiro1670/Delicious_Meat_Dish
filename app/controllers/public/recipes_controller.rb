@@ -17,6 +17,14 @@ class Public::RecipesController < ApplicationController
   end
   
   def index
+    if params[:latest]
+        @recipes = Recipe.latest
+    elsif params[:old]
+        @recipes = Recipe.old
+    else
+        @recipes = Recipe.all
+    end
+    
     @recipes = Recipe.page(params[:page])
   end
   

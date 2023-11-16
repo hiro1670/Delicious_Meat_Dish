@@ -2,16 +2,19 @@
 
 .top-bg {
   background-color: rgba(245,245,245,0.55);
+  line-height: 60px;
   color: black;
   height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-size: 50% 75%;
-  font-size: 16px;
-  line-height: 2;
+  font-size: 20px;
   margin-bottom: 95px;
+}
+
+.about {
+  font-size: 47px;
 }
 
 .about-bg {
@@ -31,8 +34,8 @@ body {
 
 main {
   // background-image: url('/assets/back.jpeg');
-  background-image: image-url('/assets/back.jpeg');
-  
+  background-image: url('/assets/back.jpeg');
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -50,7 +53,9 @@ main {
 }
 
 .about-text {
-  padding-top: 70px;
+  line-height: 50px;
+  font-size: 23px;
+  padding-top: 55px;
 }
 
 footer {
@@ -62,11 +67,13 @@ footer {
 .footer__navi {
   flex-wrap: wrap;
   margin-bottom: 2rem;
+  padding-bottom: 30px;
 }
 
 .footer__navi li {
   float: right;
   display: inline-block;
+  margin-right: 16px;
 }
 
 .footer__navi li:not(:last-child) {
