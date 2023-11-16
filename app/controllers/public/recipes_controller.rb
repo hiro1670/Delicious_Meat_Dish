@@ -1,4 +1,5 @@
 class Public::RecipesController < ApplicationController
+  before_action :ensure_user, only: [:edit, :update, :destroy]
   
   def new
     @recipe = Recipe.new
@@ -53,5 +54,11 @@ class Public::RecipesController < ApplicationController
       recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy],
       procedures_attributes: [:id, :body, :_destroy]
       )
+  end
+  
+  def ensure_user
+    @recipes = current_user.recipes
+    @recipe = @recipes.find_by(id: params[:id])
+    redirect_to recipes_path unless @recipe
   end
 end

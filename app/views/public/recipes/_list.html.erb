@@ -19,9 +19,13 @@
                 <p class="card-text">タグ：
                   <%= link_to recipe.tag, tag_search_path(tag: recipe.tag) %>
                 </p>
-                <span><i class="fas fa-user"></i> By <%= recipe.user.name %> | </span>
+                <span><i class="fas fa-user"></i> By 
+                <%= link_to (recipe.user )do %>
+                  <%= recipe.user.name %>
+                <% end %>
+                | </span>
                 <span><i class="fa-solid fa-comment"></i><%= recipe.recipe_comments.count %>コメント</span>
-                <span>❤️︎<%= recipe.favorites.count %></span>
+                <span>❤️️️︎<%= recipe.favorites.count %></span>
                 <span><%= render 'public/recipes/average_star', recipe: recipe %></span>
               </div>
             </div>

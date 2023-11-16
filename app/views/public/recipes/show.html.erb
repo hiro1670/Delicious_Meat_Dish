@@ -19,7 +19,12 @@
               <p class="card-title">説明：<%= @recipe.explanation %></p>
               <p class="card-title">タグ：<%= @recipe.tag%></p>
 
-              <span> By <%= @recipe.user.name %> |</span>
+              <span> By 
+              <%= link_to (@recipe.user) do %>
+              <%= @recipe.user.name %>
+              <% end %>
+              |</span>
+              
               <span><%= @recipe.created_at.strftime('%Y/%m/%d') %> |</span>
               <span><i class="fa-solid fa-comment"></i><%= @recipe.recipe_comments.count %></span>
 
