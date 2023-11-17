@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   }
 
 
-  #顧客側のルーティング
+  #ユーザー側のルーティング
   scope module: :public do
     root to: 'homes#top'
     get "about" => "homes#about", as: "about"

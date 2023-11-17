@@ -15,6 +15,7 @@ class Public::RecipeCommentsController < ApplicationController
   
   def destroy
     RecipeComment.find(params[:id]).destroy
+    flash[:notice] = "コメント/レビューを削除しました"
     redirect_to request.referer
   end
   

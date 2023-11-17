@@ -28,7 +28,5 @@
   
    <%= render 'public/recipes/list', recipes: @recipes %>
    
-   <div class="d-flex justify-content-center mt-3 custom-pagination">
-    <%= paginate @recipes %>
-  </div>
+   <%= render 'layouts/paginate', recipes: @recipes %>
 </div>

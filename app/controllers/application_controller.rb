@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  def after_sign_up_path_for(resource)
+    flash[:notice] = "ユーザー登録をしました"
+    user_path(current_user.id)
+  end
+  
   def after_sign_out_path_for(resource)
     flash[:notice] = "ログアウトしました"
     root_path

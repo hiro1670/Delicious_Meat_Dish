@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-4 my-5">
+    <div class="col-4 offset-2 my-5">
       <h3><%= @user.name %> さんのユーザー情報</h3>
     </div>
     
@@ -8,7 +8,7 @@
   </div>
   
   <div class="row">
-    <div class="col-9">
+    <div class="col-9 offset-2">
       <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
       
         <table class="table table-borderless">
