@@ -3,8 +3,9 @@
     <h2 class="mt-5 bg-light">レシピ一覧（全<%= @recipes.count %>件）</h2>
     
     <div class="col-5 mt-5">
-          <%= link_to '新しい順', recipes_path(latest: "true") %>
+    <h3><%= link_to '新しい順', recipes_path(latest: "true") %>
     | <%= link_to '古い順', recipes_path(old: "true") %>
+    |<%= link_to '評価の高い順', recipes_path(star_count: "true") %></h3>
     </div>
   </div>
 </div>

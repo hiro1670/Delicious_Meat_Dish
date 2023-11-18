@@ -32,17 +32,20 @@
           </tr>
         
           <tr>
+            <td><h4>材料・分量</h4></td>
             <%= f.fields_for :recipe_ingredients do |t| %>
-            <td><%= render "recipe_ingredient_fields", f: t %></td>
+            <td class="d-block"><%= render "recipe_ingredient_fields", f: t %></td>
             <% end %>
             <td><%= link_to_add_association "+フォームを追加", f, :recipe_ingredients, class: "btn btn-block" %></td>
           </tr>
           
           <tr>
+            <td><h4>手順</h4></td>
             <%= f.fields_for :procedures do |t| %>
-            <td><%= render "procedure_fields", f: t %></td>
+            <td class="d-block"><%= render "procedure_fields", f: t %>
             <% end %>
-            <td></td>
+            </td>
+            
             <td><%= link_to_add_association "+フォームを追加", f, :procedures, class: "btn btn-block" %></td>
           </tr>
           

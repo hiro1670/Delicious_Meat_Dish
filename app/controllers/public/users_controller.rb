@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
+  
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.page(params[:page])
@@ -44,6 +45,7 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :is_deleted)
   end
   
+  #他人の登録情報編集画面にいかない
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id

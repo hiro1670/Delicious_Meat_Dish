@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+    <%= render 'layouts/error', obj: @recipe %>
     <div class="col-md-auto offset-2">
       <h1 class="bg-light mt-4 mb-3"><%= @recipe.name %>レシピ編集</h1>
     </div>
@@ -31,7 +32,7 @@
           </tr>
           
           <tr>
-            <td></td>
+            <td><h4>材料・分量</h4></td>
             <%= f.fields_for :recipe_ingredients do |t| %>
             
             <td class="d-block">
@@ -43,7 +44,7 @@
           </tr>
           
           <tr>
-            <td></td>
+            <td><h4>手順</h4></td>
             <%= f.fields_for :procedures do |t| %>
             <td class="d-block"><%= render "procedure_fields", f: t %></td>
             <% end %>

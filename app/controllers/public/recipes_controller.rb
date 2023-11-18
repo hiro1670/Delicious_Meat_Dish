@@ -3,7 +3,6 @@ class Public::RecipesController < ApplicationController
   
   def new
     @recipe = Recipe.new
-    @recipe_ingredients = @recipe.recipe_ingredients.build#親モデル.子モデル.buildで子モデルのインスタンス作成
   end
   
   def create
@@ -18,19 +17,20 @@ class Public::RecipesController < ApplicationController
   
   def index
     if params[:latest]
-        @recipes = Recipe.latest
+      @recipes = Recipe.latest.page(params[:page])
     elsif params[:old]
-        @recipes = Recipe.old
+      @recipes = Recipe.old.page(params[:page])
+    elsif params[:star_count]
+      @recipes = Recipe.includes(:recipe_comments).order('recipe_comments.star DESC').page(params[:page])
     else
-        @recipes = Recipe.all
+      @recipes = Recipe.all.page(params[:page])
     end
     
-    @recipes = Recipe.page(params[:page])
+    # @recipes = Recipe.all
   end
   
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_ingredients = @recipe.recipe_ingredients.build
     @recipe_comment = RecipeComment.new
   end
   
@@ -40,8 +40,12 @@ class Public::RecipesController < ApplicationController
   
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update(recipe_params)
-    redirect_to recipe_path(@recipe.id)
+    if @recipe.update(recipe_params)
+      flash[:notice] = "レシピ情報を変更しました"
+      redirect_to recipe_path(@recipe.id)
+    else
+      render :edit
+    end
   end
   
   def destroy
@@ -64,6 +68,7 @@ class Public::RecipesController < ApplicationController
       )
   end
   
+  #他人の投稿編集ページにいかないようにする
   def ensure_user
     @recipes = current_user.recipes
     @recipe = @recipes.find_by(id: params[:id])
