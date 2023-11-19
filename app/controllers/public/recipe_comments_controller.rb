@@ -6,7 +6,7 @@ class Public::RecipeCommentsController < ApplicationController
     comment.recipe_id = recipe.id
     comment.user_id = current_user.id
     if comment.save
-      flash[:notice] = "コメントしました"
+      flash[:notice] = "コメント/レビューしました"
       redirect_to recipe_path(recipe)
     else
       render :show
