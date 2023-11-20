@@ -23,6 +23,7 @@ class Recipe < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :sorted_by_recipe_comment, -> {joins(:recipe_comment).order('recipe_comments.star DESC')}
+  scope :sorted_by_favorite, -> {joins(:favorite).ordir('favorites.id DESC')}
 
   #レシピ画像
   def get_recipe_image(width, height)

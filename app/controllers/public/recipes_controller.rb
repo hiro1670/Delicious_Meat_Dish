@@ -23,6 +23,8 @@ class Public::RecipesController < ApplicationController
       @recipes = Recipe.old.page(params[:page])
     elsif params[:star_count]
       @recipes = Recipe.includes(:recipe_comments).order('recipe_comments.star DESC').page(params[:page])
+    elsif params[:favorites_count]
+      @recipes = Recipe.includes(:favorites).order('favorites.id DESC').page(params[:page])
     else
       @recipes = Recipe.all.page(params[:page])
     end

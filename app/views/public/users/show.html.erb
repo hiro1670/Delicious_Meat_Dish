@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 my-5">
+    <div class="col-sm-10 col-md-auto my-5">
       <%= render 'layouts/flash' %>
         <table class="table table-borderless">
           <tr>
@@ -16,4 +16,4 @@
 </div>
    <%= render 'public/recipes/list', recipes: @recipes %>
    
-   <%= render 'layouts/paginate', recipes: @recipes %>
+   <%= paginate @recipes %>

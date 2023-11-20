@@ -31,15 +31,14 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
   
-  
   protected
   
   def reject_user
-    @user = User.find_by(email: params[:user][:email])
+    @user = User.find_by(email: params[:user][:email]) 
     if @user
-      if @user.valid_password?(params[:user][:password]) && !@user.is_deleted#(@user.is_deleted == true)
+      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_user_registration_path
+        redirect_to new_user_session_path(resource)
       else
         flash[:notice] = "項目を入力してください"
       end

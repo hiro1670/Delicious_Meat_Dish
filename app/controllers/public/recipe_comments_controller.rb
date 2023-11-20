@@ -9,7 +9,9 @@ class Public::RecipeCommentsController < ApplicationController
       flash[:notice] = "コメント/レビューしました"
       redirect_to recipe_path(recipe)
     else
-      render :show
+      flash[:notice] = 
+      "コメント/レビューの送信に失敗しました。コメント/レビューどちらも入力してください"
+      redirect_to recipe_path(recipe)
     end
   end
   

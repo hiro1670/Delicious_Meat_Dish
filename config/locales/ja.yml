@@ -1,4 +1,21 @@
 ja:
+  activerecord:
+     models:
+       recipe: レシピ
+       recipeingredient: 料理の材料
+       Procedure: 料理の手順
+     attributes:
+       recipe:
+         recipe_image: レシピ画像
+         name: レシピ名
+         explanation: 説明
+         tag: タグ
+       recipe_ingredients:
+         name: 材料
+         quantity: 分量
+       procedures:
+         body: 手順
+
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
@@ -6,9 +23,3 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
-      
-ja:
-  activerecord:
-  errors:
-    messages:
-      record_invalid: "バリデーションに失敗しました: %{errors}"

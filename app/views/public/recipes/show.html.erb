@@ -1,5 +1,6 @@
 <div class="container">
   <%= render 'layouts/flash' %>
+  <%= render 'layouts/error', obj: @recipe_comment %>
   <div class="row">
     <h1 class="mt-4 my-3 bg-light"><%= @recipe.name %>レシピ詳細</h1>
   </div>
@@ -29,7 +30,7 @@
               <span><i class="fa-solid fa-comment"></i><%= @recipe.recipe_comments.count %></span>
 
             <%# 管理者ならばいいね機能は表示しない %>
-            <% unless admin_signed_in? %>
+            <% if user_signed_in? %>
               <% if @recipe.favorited_by?(current_user) %>
                 <span>
                   <%= link_to recipe_favorite_path(@recipe), method: :delete do %>
@@ -122,7 +123,7 @@
             <label class="mt-3 mb-3">コメントする</label>
 
             <%= form_with model: [@recipe, @recipe_comment] do |f|%>
-              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", :size=>"60x5" %>
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", :size=>"55x5" %>
 
               <%#評価機能=%>
               <% if @recipe_comment.id.nil? %>
