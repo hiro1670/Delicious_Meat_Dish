@@ -25,6 +25,8 @@ class Public::RecipesController < ApplicationController
       @recipes = Recipe.includes(:recipe_comments).order('recipe_comments.star DESC').page(params[:page])
     elsif params[:favorites_count]
       @recipes = Recipe.includes(:favorites).order('favorites.id DESC').page(params[:page])
+    elsif params[:read_counts_count]
+      @recipes = Recipe.includes(:read_counts).order('read_counts.id DESC').page(params[:page])
     else
       @recipes = Recipe.all.page(params[:page])
     end
@@ -35,6 +37,9 @@ class Public::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
+    unless ReadCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, recipe_id: @recipe.id)
+      current_user.read_counts.create(recipe_id: @recipe.id)
+    end
   end
   
   def edit
@@ -75,6 +80,7 @@ class Public::RecipesController < ApplicationController
   def ensure_user
     @recipes = current_user.recipes
     @recipe = @recipes.find_by(id: params[:id])
+    flash[:notice] = "自分が投稿したレシピ以外の編集画面には遷移できません"
     redirect_to recipes_path unless @recipe
   end
 end

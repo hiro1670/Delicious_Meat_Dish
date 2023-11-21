@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   has_many :procedures, dependent: :destroy
   has_many :recipe_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :read_counts, dependent: :destroy
   
   has_one_attached :recipe_image
 
@@ -23,7 +24,8 @@ class Recipe < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :sorted_by_recipe_comment, -> {joins(:recipe_comment).order('recipe_comments.star DESC')}
-  scope :sorted_by_favorite, -> {joins(:favorite).ordir('favorites.id DESC')}
+  scope :sorted_by_favorite, -> {joins(:favorite).order('favorites.id DESC')}
+  scope :sorted_by_read_count, -> {joins(:read_count).order('read_counts.id DESC')}
 
   #レシピ画像
   def get_recipe_image(width, height)

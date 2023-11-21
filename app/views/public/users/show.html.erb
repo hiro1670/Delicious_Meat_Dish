@@ -1,13 +1,15 @@
 <div class="container">
+  <%= render 'layouts/flash' %>
   <div class="row">
     <div class="col-sm-10 col-md-auto my-5">
-      <%= render 'layouts/flash' %>
         <table class="table table-borderless">
           <tr>
             <td><h2 class="bg-light"><%= @user.name %>さんのレシピ一覧</h2></td>
-            <td><%= link_to "お気に入りレシピ", favorites_user_path(@user.id), class: 'btn btn-lg btn-success' %></td>
-            <% if @user == current_user %>
-            <td><%= link_to "登録情報を編集する", edit_user_path(@user.id), class: 'btn btn-lg btn-success' %></td>
+            <td><%= link_to "お気に入りレシピ", favorites_user_path(@user.id), class: 'btn btn-success' %></td>
+            <% unless @user.guest_user? %><%# ユーザーのemailがguest@example.comではない場合には、ボタンを表示します %>
+              <% if @user == current_user %>
+                <td><%= link_to "登録情報を編集する", edit_user_path(@user.id), class: 'btn btn-success' %></td>
+              <% end %>
             <% end %>
           </tr>
         </table>

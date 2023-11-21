@@ -1,13 +1,13 @@
 <div class="container">
+  <%= render 'layouts/error', obj: @recipe %>
   <div class="row justify-content-center">
-      <%= render 'layouts/error', obj: @recipe %>
     <div class="col-md-auto pb-3">
-      <h1 class="mt-3">新規投稿</h1>
+      <h1 class="bg-light mt-3">新規投稿</h1>
     </div>
   </div>
   
   <div class="row justify-content-center">
-    <div class="col-md-auto">
+    <div class="col-md-9 offset-md-3">
       <%= form_with model: @recipe, local: true do |f| %>
       
       <table class="table table-borderless mt-3">

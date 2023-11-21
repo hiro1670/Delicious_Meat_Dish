@@ -1,8 +1,8 @@
 <div class="container">
+  <%= render 'layouts/error', obj: @user %>
   <div class="row">
-    <%= render 'layouts/error', obj: @user %>
     <div class="col offset-2 my-5">
-      <h2 class="col-4">ユーザー情報編集</h2>
+      <h2 class="col-4 bg-light">ユーザー情報編集</h2>
     </div>
   </div>
   
@@ -22,8 +22,8 @@
         </tr>
         
         <tr>
-          <td><%= f.submit "編集内容を保存", class: 'btn btn-success btn-lg' %></td>
-          <td><%= link_to "退会する", confirm_users_path, class: 'btn btn-danger btn-lg' %></td>
+          <td><%= f.submit "編集内容を保存", class: 'btn btn-success' %></td>
+          <td><%= link_to "退会する", confirm_users_path, class: 'btn btn-danger' %></td>
         </tr>
       </table>
       

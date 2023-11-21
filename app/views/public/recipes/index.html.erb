@@ -1,7 +1,7 @@
 <div class="container">
+  <%= render 'layouts/flash' %>
   <div class="row justify-content-between">
-    <%= render 'layouts/flash' %>
-    <h2 class="mt-5 bg-light">レシピ一覧（全<%= @recipes.count %>件）</h2>
+    <h2 class="mt-5 bg-light">レシピ一覧（全<%= @recipes.total_count %>件）</h2>
     
     <div class="col-md-auto col-sm-10 mt-5">
       <h4>
@@ -11,6 +11,7 @@
           <option value="<%= recipes_path(old: "true") %>">古い順</option>
           <option value="<%= recipes_path(star_count: "true") %>">評価の高い順</option>
           <option value="<%= recipes_path(favorites_count: "true") %>">いいねが多い順</option>
+          <option value="<%= recipes_path(read_counts_count: "true") %>">閲覧が多い順</option>
         </select>
       </h4>
     </div>

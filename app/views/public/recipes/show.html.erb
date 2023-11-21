@@ -28,8 +28,9 @@
               
               <span><%= @recipe.created_at.strftime('%Y/%m/%d') %> |</span>
               <span><i class="fa-solid fa-comment"></i><%= @recipe.recipe_comments.count %></span>
+              <span> <i class="fa-solid fa-eye"></i> <%= @recipe.read_counts.count %></span>
 
-            <%# 管理者ならばいいね機能は表示しない %>
+            <%# 管理者とログインしていないユーザーはいいね機能は表示しない %>
             <% if user_signed_in? %>
               <% if @recipe.favorited_by?(current_user) %>
                 <span>
@@ -45,7 +46,7 @@
                 </span>
               <% end %>
             <% end %>
-
+            
             </div>
           </div>
 
@@ -114,6 +115,7 @@
                         </td>
                       </tr>
                     </table>
+                    <%= recipe_comment.created_at.strftime('%Y/%m/%d') %>
                 </div>
               </div>
             <% end %>
@@ -154,7 +156,7 @@
                 <% end %>
                 <%#評価機能%>
 
-              <%= f.submit "送信する", class:'btn btn-lg btn-info mt-2 float-light' %>
+              <%= f.submit "送信する", class:'btn btn-lg btn-info mt-2' %>
             <% end %>
           </div>
         </div>

@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="row">
-    <div class="col-4 offset-2 my-5">
-      <h3><%= @user.name %> さんのユーザー情報</h3>
+  <div class="row justify-content-center">
+    <div class="col-md-auto mt-5 mb-4">
+      <h3 class="bg-light"><%= @user.name %> さんのユーザー情報</h3>
     </div>
     
     <%= render 'layouts/error', obj: @user %>
   </div>
   
-  <div class="row">
-    <div class="col-9 offset-2">
+  <div class="row justify-content-center">
+    <div class="col-9 offset-2 pt-4">
       <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
       
         <table class="table table-borderless">
@@ -37,7 +37,7 @@
           
           <tr>
             <td></td>
-            <td><%= f.submit "変更を保存", class: 'btn btn-success btn-lg' %></td>
+            <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
           </tr>
         </table>
         

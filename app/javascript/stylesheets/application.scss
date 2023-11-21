@@ -38,8 +38,9 @@ body {
 }
 
 main {
-  // background-image: url('/assets/back.jpeg');
-  background-image: url('/assets/back.jpeg');
+  background-image: image-url("back.jpeg");
+  //background-image: url('/assets/back.jpeg');
+  //background-image: url('/assets/back.jpeg');
 
   background-size: cover;
   background-position: center;
@@ -91,4 +92,15 @@ footer {
 
 .pagination {
   justify-content: center;
+}
+
+.flash-message {
+  text-align: center;
+  height: auto;
+  width: auto;
+  background-color: #00fa9a;
+}
+
+.alert {
+  text-align: center;
 }
