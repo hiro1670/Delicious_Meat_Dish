@@ -48,4 +48,9 @@ class Recipe < ApplicationRecord
       "recipes.name LIKE? OR recipes.explanation LIKE? OR recipes.tag LIKE? OR recipe_ingredients.name LIKE?",
       "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%").uniq
   end
+  
+  #レシピの閲覧
+  def read_count
+    self.read_counts.count
+  end
 end

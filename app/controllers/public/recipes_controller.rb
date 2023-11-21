@@ -1,10 +1,10 @@
 class Public::RecipesController < ApplicationController
   before_action :ensure_user, only: [:edit, :update, :destroy]
-  
+
   def new
     @recipe = Recipe.new
   end
-  
+
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
@@ -15,7 +15,7 @@ class Public::RecipesController < ApplicationController
       render :new
     end
   end
-  
+
   def index
     if params[:latest]
       @recipes = Recipe.latest.page(params[:page])
@@ -30,10 +30,10 @@ class Public::RecipesController < ApplicationController
     else
       @recipes = Recipe.all.page(params[:page])
     end
-    
+
     # @recipes = Recipe.all
   end
-  
+
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
@@ -41,11 +41,11 @@ class Public::RecipesController < ApplicationController
       current_user.read_counts.create(recipe_id: @recipe.id)
     end
   end
-  
+
   def edit
     @recipe = Recipe.find(params[:id])
   end
-  
+
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
@@ -55,15 +55,15 @@ class Public::RecipesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to recipes_path
   end
-  
+
   private
-  
+
   def recipe_params#accepts_nested_attributes_forで指定したrecipe_ingredientsモデルをrecipe_ingredients_attributes: []として一緒に追加して送ることができる。
     params.require(:recipe).permit(
       :user_id,
@@ -75,7 +75,7 @@ class Public::RecipesController < ApplicationController
       procedures_attributes: [:id, :body, :_destroy]
       )
   end
-  
+
   #他人の投稿編集ページにいかないようにする
   def ensure_user
     @recipes = current_user.recipes

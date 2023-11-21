@@ -28,7 +28,7 @@
                 | </span>
                 <span> <i class="fa-solid fa-comment"></i><%= recipe.recipe_comments.count %>コメント</span>
                 <span>❤️️️︎ <%= recipe.favorites.count %></span>
-                <span><i class="fa-solid fa-eye"></i> <%= recipe.read_counts.count %></span>
+                <span> <i class="fa-solid fa-eye"></i> <%= recipe.read_count %></span>
                 <span><%= render 'public/recipes/average_star', recipe: recipe %></span>
               </div>
             </div>
