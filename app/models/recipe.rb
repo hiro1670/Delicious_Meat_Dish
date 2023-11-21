@@ -51,6 +51,6 @@ class Recipe < ApplicationRecord
   
   #レシピの閲覧
   def read_count
-    self.read_counts.count
+    ReadCount.where(recipe_id: self.id).count
   end
 end
