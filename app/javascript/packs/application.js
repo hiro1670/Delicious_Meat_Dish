@@ -24,6 +24,7 @@ window.raty = function(elem,opt){
 require("@nathanvda/cocoon")
 require("jquery")
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

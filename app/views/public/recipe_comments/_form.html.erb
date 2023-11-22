@@ -1,0 +1,38 @@
+<div class="form-group">
+  <label class="mt-3 mb-3">コメントする</label>
+
+  <%= form_with model: [recipe, recipe_comment] do |f|%>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", :size=>"55x5" %>
+
+    <%#評価機能=%>
+    <% if recipe_comment.id.nil? %>
+        <div class="form-group" id="star">
+          <%= f.label :star, "評価" %>
+          <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+          <div id="post_raty"></div>
+        </div>
+        <script>
+          $(document).on('turbolinks:load', function() {
+            let elem = document.querySelector('#post_raty');
+            if (elem == null) return;
+
+            elem.innerHTML = ""
+            let opt = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'recipe_comment[star]',
+            };
+            raty(elem, opt);
+          });
+        </script>
+      <% else %>
+        <div class="form-group">
+          <%= render "public/recipes/star", recipe_comment: recipe_comment %>
+        </div>
+      <% end %>
+      <%#評価機能%>
+
+    <%= f.submit "送信する", class:'btn btn-lg btn-info mt-2' %>
+  <% end %>
+</div>
