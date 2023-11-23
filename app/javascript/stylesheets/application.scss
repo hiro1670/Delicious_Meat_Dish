@@ -44,7 +44,8 @@ body {
 
 main {
   //background-image: url('/assets/back.jpeg');
-  background-image: image-url("back.jpg");
+  //background-image: image-url("back.jpg");
+  background-image: url("../images/back.jpg");
 
   background-size: cover;
   background-position: center;
