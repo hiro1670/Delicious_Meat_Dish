@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+ul li {
+  width: fit-content;
+  margin: auto;
+}
+
 .top-bg {
   background-color: rgba(245,245,245,0.55);
   line-height: 60px;
@@ -38,8 +43,8 @@ body {
 }
 
 main {
-  //background-image: url('/assets/back.jpeg');
-  background-image: image-url("back.jpeg");
+  background-image: url('/assets/back.jpeg');
+  //background-image: image-url("back.jpeg");
 
   background-size: cover;
   background-position: center;

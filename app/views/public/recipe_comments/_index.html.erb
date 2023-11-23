@@ -1,24 +1,24 @@
-<div class="comments card-text">
-  <h4 class="mt-4 mb-4"><%= recipe.recipe_comments.count %>件コメント</h4>
-
-  <% recipe.recipe_comments.each do |recipe_comment| %>
-    <div class="media border md-3">
-      <div class="media-body ml-4 p-3">
-          <%= recipe_comment.user.name %>
-          ｜<%= recipe_comment.comment %>
-          <table class="table table-borderless">
-            <tr>
-              <td><%= render "star", recipe_comment: recipe_comment %></td>
-              <td>
-              <%#管理者　またはレシピにコメントしたのがログインしているユーザーだったら %>
-                <% if current_admin || recipe_comment.user == current_user %>
-                  <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: 'btn btn-danger btn-sm' %>
-                <% end %>
-              </td>
-            </tr>
-          </table>
-          <%= recipe_comment.created_at.strftime('%Y/%m/%d') %>
+  <div class="comments card-text">
+    <h4 class="mt-4 mb-4"><%= recipe.recipe_comments.count %>件コメント</h4>
+  
+    <% recipe.recipe_comments.each do |recipe_comment| %>
+      <div class="media border md-3">
+        <div class="media-body ml-4 p-3">
+            <%= recipe_comment.user.name %>
+            ｜<%= recipe_comment.comment %>
+            <table class="table table-borderless">
+              <tr>
+                <td><%= render "star", recipe_comment: recipe_comment %></td>
+                <td>
+                <%#管理者　またはレシピにコメントしたのがログインしているユーザーだったら %>
+                  <% if current_admin || recipe_comment.user == current_user %>
+                    <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: 'btn btn-danger btn-sm' %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+            <%= recipe_comment.created_at.strftime('%Y/%m/%d') %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>

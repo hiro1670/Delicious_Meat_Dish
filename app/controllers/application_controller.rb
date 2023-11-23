@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_admin!, if: :admin_url
   
   def after_sign_in_path_for(resource)
     flash[:notice] = "ログインしました"
@@ -14,6 +15,11 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     flash[:notice] = "ログアウトしました"
     root_path
+  end
+  
+  #pathに/adminが含まれている全てのページは、adminでログインしないと見れない
+  def admin_url
+    request.fullpath.include?("/admin")
   end
   
   protected

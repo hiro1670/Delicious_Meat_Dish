@@ -1,14 +1,14 @@
 <div class="container">
   <div class="card-list-container py-5">
     <div class="row">
-      
+
     <% recipes.each do |recipe| %>
       <div class="col-md-4">
         <div class="card mx-auto mb-4 shadow-lg">
           <%= link_to recipe_path(recipe.id) do %>
             <%= image_tag recipe.get_recipe_image(500,400), class:"card-img-top"; %>
           <% end %>
-          
+
           <div class="card-body">
             <div class="row">
               <div class="col-sm-12 col-md-12">
@@ -21,14 +21,14 @@
                 <p class="card-text">タグ：
                   <%= link_to recipe.tag, tag_search_path(tag: recipe.tag) %>
                 </p>
-                <span><i class="fas fa-user"></i> By 
+                <span><i class="fas fa-user"></i> By
                 <%= link_to (recipe.user )do %>
                   <%= recipe.user.name %>
                 <% end %>
                 | </span>
                 <span> <i class="fa-solid fa-comment"></i><%= recipe.recipe_comments.count %>コメント</span>
                 <span>❤️️️︎ <%= recipe.favorites.count %></span>
-                <span> <i class="fa-solid fa-eye"></i> <%= recipe.read_count %></span>
+                <span> <i class="fa-solid fa-eye"></i> <%= recipe.read_counts.count %></span>
                 <span><%= render 'public/recipes/average_star', recipe: recipe %></span>
               </div>
             </div>
