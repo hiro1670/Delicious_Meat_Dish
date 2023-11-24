@@ -15,7 +15,7 @@ ja:
          quantity: 分量
        procedures:
          body: 手順
-
+         
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

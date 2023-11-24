@@ -18,6 +18,6 @@ class Users::SessionsController < Devise::SessionsController
     user.recipes.destroy_all
     user.recipe_comments.destroy_all
     user.read_counts.destroy_all
-    #user.favorites.destroy_all
+    user.favorites.destroy_all
   end
 end
