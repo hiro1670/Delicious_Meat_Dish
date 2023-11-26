@@ -34,4 +34,5 @@ https://docs.google.com/spreadsheets/d/1jRb9GgaZ1WRKeBPVBhJkUtVkIa2dXcUJ/edit?us
 ## 開発環境
 - 言語 : HTML,CSS,Ruby,JavaScript,SQL
 - フレームワーク : Ruby on Rails
+- JSライブラリ：jQuery
 - IDE : Cloud9
