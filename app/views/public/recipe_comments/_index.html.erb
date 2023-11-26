@@ -1,5 +1,5 @@
-<%#<% if recipe.recipe_comments.any? %>
-  <%#<hr>%>
+<% if recipe.recipe_comments.any? %>
+  <hr>
   
   <div class="comments card-text">
     <h4 class="mt-4 mb-4"><%= recipe.recipe_comments.count %>件コメント</h4>
@@ -25,4 +25,4 @@
       </div>
     <% end %>
   </div>
-<%#<% end %>
+<% end %>

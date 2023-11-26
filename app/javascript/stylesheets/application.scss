@@ -101,6 +101,7 @@ footer {
 
 .flash-message {
   text-align: center;
+  padding: 10px 0;
   height: auto;
   width: auto;
   background-color: #00fa9a;
@@ -108,4 +109,9 @@ footer {
 
 .alert {
   text-align: center;
+}
+
+#error_explanation {
+  margin: 0 auto;
+  padding-top: 16px;
 }
