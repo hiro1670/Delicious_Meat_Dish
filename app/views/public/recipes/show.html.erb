@@ -71,7 +71,7 @@
             <% end %>
 
           <table class="table-borderless">
-            <% if @recipe.user == current_user %>
+            <% if current_admin || @recipe.user == current_user %>
               <tr>
                 <td width="200"></td>
                 <td width="300"><%= link_to "削除", recipe_path(@recipe), method: :delete, class:'btn btn-danger btn-sm' %></td>

@@ -2,7 +2,12 @@ class Public::RecipesController < ApplicationController
   before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def new
-    @recipe = Recipe.new
+    if user_signed_in?
+      @recipe = Recipe.new
+    else
+      flash[:notice] = "投稿するにはログインもしくは新規登録してください"
+      redirect_to new_user_session_path
+    end
   end
 
   def create
@@ -83,9 +88,11 @@ class Public::RecipesController < ApplicationController
 
   #他人の投稿編集ページにいかないようにする
   def ensure_user
-    @recipes = current_user.recipes
-    @recipe = @recipes.find_by(id: params[:id])
-    flash[:notice] = "自分が投稿したレシピ以外の編集画面には遷移できません"
-    redirect_to recipes_path unless @recipe
+    unless admin_signed_in?
+      @recipes = current_user.recipes
+      @recipe = @recipes.find_by(id: params[:id])
+      flash[:notice] = "自分が投稿したレシピ以外の編集画面には遷移できません"
+      redirect_to recipes_path unless @recipe
+    end
   end
 end

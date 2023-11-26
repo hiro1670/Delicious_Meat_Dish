@@ -50,9 +50,11 @@ class Public::UsersController < ApplicationController
   #他人の登録情報編集画面にいかない
   def is_matching_login_user
     user = User.find(params[:id])
-    unless user.id == current_user.id
-      flash[:notice] = "他のユーザーの編集画面には遷移できません"
-      redirect_to recipes_path
+    unless admin_signed_in?
+      if user.id != current_user.id
+        flash[:notice] = "他のユーザーの編集画面には遷移できません"
+        redirect_to recipes_path
+      end
     end
   end
   
