@@ -22,7 +22,10 @@
 - 自分が作った料理のレシピを投稿する時
 
 ## 設計書
-後ほど作成予定
+### ER図
+![image](https://github.com/hiro1670/Delicious_Meat_Dish/assets/141907177/d0b666c5-6194-4d58-a0a4-36b77fe51bdc)
+
+
 
 ## 開発環境
 - 言語 : HTML,CSS,Ruby,JavaScript,SQL
