@@ -9,6 +9,7 @@ class Users::SessionsController < Devise::SessionsController
     user = User.guest
     delete_guest_user_data(user)
     sign_out(user)
+    flash[:notice] = "ゲストユーザーがログアウトしました"
     redirect_to root_path
   end
   
