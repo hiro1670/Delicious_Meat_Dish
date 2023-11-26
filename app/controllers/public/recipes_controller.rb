@@ -29,7 +29,7 @@ class Public::RecipesController < ApplicationController
     elsif params[:star_count]
       @recipes = Recipe.includes(:recipe_comments).order('recipe_comments.star DESC').page(params[:page])
     elsif params[:favorites_count]
-      @recipes = Recipe.includes(:favorites).order('favorites.id DESC').page(params[:page])
+      @recipes = Kaminari.paginate_array(Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').pluck(:recipe_id))).page(params[:page])
     elsif params[:sorted_by_read_count]
       #@recipes = Recipe.includes(:read_counts).order('read_counts.id DESC').page(params[:page])
       recipes = Recipe.sorted_by_read_count
