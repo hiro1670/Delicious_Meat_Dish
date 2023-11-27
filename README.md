@@ -1,4 +1,5 @@
 # DeliciousMeatDish
+<img width="1440" alt="スクリーンショット 2023-11-27 12 24 23" src="https://github.com/hiro1670/Delicious_Meat_Dish/assets/141907177/ea5383cb-a451-49f4-b4cd-5fa8dfb18a00">
 
 ## サイト概要
 
