@@ -34,6 +34,7 @@
 https://docs.google.com/spreadsheets/d/1jRb9GgaZ1WRKeBPVBhJkUtVkIa2dXcUJ/edit?usp=sharing&ouid=116549274122844967640&rtpof=true&sd=true
 
 ### アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1xONyXSatOsMoQIEBszu_3LMDuuzPgSuTvWEvemliZMo/edit?usp=sharing
 
 ## 開発環境
 - 言語 : HTML,CSS,Ruby,JavaScript,SQL
