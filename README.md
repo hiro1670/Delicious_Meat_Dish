@@ -28,7 +28,9 @@
 
 ## 設計書
 ### ER図
-![image](https://github.com/hiro1670/Delicious_Meat_Dish/assets/141907177/d0b666c5-6194-4d58-a0a4-36b77fe51bdc)
+![image](https://github.com/hiro1670/Delicious_Meat_Dish/assets/141907177/8d99e34d-582f-4c33-9da5-14617ce2d1a1)
+
+
 
 ### テーブル定義書
 https://docs.google.com/spreadsheets/d/1jRb9GgaZ1WRKeBPVBhJkUtVkIa2dXcUJ/edit?usp=sharing&ouid=116549274122844967640&rtpof=true&sd=true
