@@ -87,11 +87,21 @@ class Public::RecipesController < ApplicationController
 
   #他人の投稿編集ページにいかないようにする
   def ensure_user
+    recipe = Recipe.find(params[:id])
     unless admin_signed_in?
-      @recipes = current_user.recipes
-      @recipe = @recipes.find_by(id: params[:id])
-      flash[:notice] = "自分が投稿したレシピ以外の編集画面には遷移できません"
-      redirect_to recipes_path unless @recipe
+      if recipe.user.id != current_user.id
+        flash[:notice] = "自分が投稿したレシピ以外の編集画面には遷移できません"
+        redirect_to recipes_path
+      end
     end
   end
 end
+
+  #def ensure_user
+   # unless admin_signed_in?
+    # @recipes = current_user.recipes
+     # @recipe = @recipes.find_by(id: params[:id])
+      #flash[:notice] = "自分が投稿したレシピ以外の編集画面には遷移できません"
+      #redirect_to recipes_path unless @recipe
+    #end
+  #end
