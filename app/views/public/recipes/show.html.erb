@@ -74,7 +74,7 @@
             <% if current_admin || @recipe.user == current_user %>
               <tr>
                 <td width="200"></td>
-                <td width="300"><%= link_to "削除", recipe_path(@recipe), method: :delete, class:'btn btn-danger btn-sm' %></td>
+                <td width="300"><%= link_to "削除", recipe_path(@recipe), method: :delete, "data-confirm" => "本当に削除しますか？", class:'btn btn-danger btn-sm' %></td>
                 <td width="200"></td>
                 <td width="100"><%= link_to "レシピ編集", edit_recipe_path(@recipe), class:'btn btn-success btn-sm' %></td>
               </tr>

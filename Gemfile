@@ -57,11 +57,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari','~> 1.2.1'#ページネーション
 
-gem "cocoon"
+gem "cocoon"#フォーム追加
 
-gem 'rails-i18n'
+gem 'rails-i18n'#エラーメッセージ日本語化
+
+gem 'mini_magick'
 
 gem 'dotenv-rails'
 group :production do

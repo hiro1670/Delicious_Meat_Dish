@@ -13,7 +13,7 @@
       <table class="table table-borderless mt-3">
         <tr>
           <td><h4>画像</h4></td>
-          <td><%= f.file_field :recipe_image, accept: "image/*" %></td>
+          <td><%= f.file_field :recipe_image, accept: "image/*", multiple: true, direct_upload: true %></td>
         </tr>
           
           <tr>

@@ -4,6 +4,7 @@ class Public::RecipesController < ApplicationController
   def new
     if user_signed_in?
       @recipe = Recipe.new
+      @recipes = Recipe.all
     else
       flash[:notice] = "投稿するにはログインもしくは新規登録してください"
       redirect_to new_user_session_path
@@ -80,6 +81,7 @@ class Public::RecipesController < ApplicationController
       :explanation,#説明
       :tag,#タグ
       :recipe_image,#レシピ画像
+      :image_blob_id,
       recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy],
       procedures_attributes: [:id, :body, :_destroy]
       )
